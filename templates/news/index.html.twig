@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+     {{message}}
+    </div>
+
+   {% endfor %}
+<h2>list of all news</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+       <td>id</td>
+       <td>title</td>
+       <td>description</td>
+       <td>date</td>
+       <td>tag</td>
+
+    </tr>
+  </thread>
+  <tbody>
+    {% for news in news %}
+        <tr>
+           <td>{{news.id}}</td>
+           <td>
+           <a href="{{path('news.show',{id:news.id})}}">
+           {{news.title}}
+           </a>
+           
+           </td>
+             <td>
+           <a href="{{path('news.show',{id:news.id})}}">
+           {{news.description}}
+           </a>
+           
+           </td>
+           <td>
+           <a href="{{path('news.show',{id:news.id})}}">
+           {{news.date|date('d-m-Y') }}
+           </a>
+           
+           </td>
+             <td>
+           <a href="{{path('news.show',{id:news.id})}}">
+           {{news.tag}}
+           </a>
+           
+           </td>
+             <td>
+           <a class="text-danger" href="{{path('news.edit',{id:news.id})}}">
+             edit
+           </a>
+           
+           </td>
+           <td>
+           <a class="text-danger" href="{{path('news.delete',{id:news.id})}}">
+             delete
+           </a>
+           
+           </td>
+        </tr>
+    {% endfor %}
+
+
+
+
+  </tbody>
+
+
+</table>
+
+{% endblock %}

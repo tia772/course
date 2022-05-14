@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+     {{message}}
+    </div>
+
+   {% endfor %}
+<h2>list of all posts</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+       <td>id</td>
+       <td>title</td>
+        <td>description</td>
+    </tr>
+  </thread>
+  <tbody>
+    {% for category in categories %}
+        <tr>
+           <td>{{category.id}}</td>
+           <td>
+           <a href="{{path('category.show',{id:category.id})}}">
+           {{category.title}}
+           </a>
+           
+           </td>
+             <td>
+           <a href="{{path('category.show',{id:category.id})}}">
+           {{category.description}}
+           </a>
+           
+           </td>
+             <td>
+           <a class="text-danger" href="{{path('category.edit',{id:category.id})}}">
+             edit
+           </a>
+           
+           </td>
+
+           <td>
+           <a class="text-danger" href="{{path('category.delete',{id:category.id})}}">
+             delete
+           </a>
+           
+           </td>
+
+        </tr>
+    {% endfor %}
+
+
+
+
+  </tbody>
+
+
+</table>
+
+{% endblock %}

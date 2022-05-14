@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>{{news.title}}</h1>
+<em>{{news.category}}</em>
+<h2>{{news.description}}</h2>
+<h3>{{news.date|date('d-m-Y')}}</h3>
+<img src="{{'/uploads/'~ news.image}}" >
+
+{% endblock %}
